@@ -6,13 +6,13 @@
 /*   By: khanhayf <khanhayf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:06:36 by khanhayf          #+#    #+#             */
-/*   Updated: 2024/03/07 21:17:58 by khanhayf         ###   ########.fr       */
+/*   Updated: 2024/03/09 13:17:45 by khanhayf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "span.hpp"
 
-Span::Span():max_n(){
+Span::Span():max_n(0){
 }
 
 Span::Span(unsigned int N):max_n(N){
@@ -26,7 +26,7 @@ Span& Span::operator=(const Span &ob){
     if (this != &ob){
         max_n = ob.max_n;
         for (unsigned int i = 0; i < ob.v.size(); i++)
-            v[i] = ob.v[i];
+            this->v.push_back(ob.v[i]);
     }
     return *this;
 }
@@ -40,8 +40,10 @@ unsigned int Span::getSize()const{
 
 void Span::_print() const{
     if (!v.empty()){
-        for(unsigned int i = 0; i < v.size(); i++)
-            std::cout << "\n" << v.at(i);
+        std::vector<int>::const_iterator it;
+        std::vector<int>::const_iterator ite = v.end();
+        for (it = v.begin(); it != ite; it++)
+            std::cout << "\n" << *it;
     }
 }
 
@@ -74,7 +76,7 @@ int Span::longestSpan(){
     if (!v.empty() && v.size() >= 2){
         std::vector<int> vec(v.size());
         vec = v;
-        std::sort(vec.begin(), vec.end());//The std::sort function sorts a range of elements in ascending order. 
+        std::sort(vec.begin(), vec.end()); 
         return (vec.back() - vec.front());
     }
     else

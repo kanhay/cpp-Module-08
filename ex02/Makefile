@@ -6,7 +6,7 @@
 #    By: khanhayf <khanhayf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 15:24:22 by khanhayf          #+#    #+#              #
-#    Updated: 2024/03/07 17:42:54 by khanhayf         ###   ########.fr        #
+#    Updated: 2024/03/08 18:02:08 by khanhayf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,3 +28,8 @@ $(NAME) : $(OBJ)
 
 clean :
 	$(RM) $(OBJ)
+
+fclean :clean
+	$(RM) $(NAME)
+	
+re : fclean all
